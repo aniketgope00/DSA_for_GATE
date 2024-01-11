@@ -12,7 +12,7 @@ public class BinarySearch {
             System.out.print("Enter element no."+count+": ");
             arr[i] = sc.nextInt();
         }
-        System.out.print("Enter element to be entered: ");
+        System.out.print("Enter element to be searched: ");
         int target = sc.nextInt();
         int result = search(arr,target);
         if (result == -1){
@@ -27,10 +27,10 @@ public class BinarySearch {
     //Implementing Binary Search algorithm
     static int search(int[] arr, int target){
         int start = 0;
-        int end = arr.length;
-        int mid = start + end / 2;
+        int end = arr.length - 1;
+        int mid = (start + end) / 2;
         //Including a condition for the split/compare process to run repeatedly
-        while(start < arr.length & end >= 0){
+        while(start <= end){
             if(target > arr[mid]){
                 start = mid + 1;
                 mid = (start + end) / 2;
@@ -47,7 +47,7 @@ public class BinarySearch {
         //This block will only be reached if the above loop
         //has been exhausted before arr[mid]==target becomes true.
         //Checking if the element has been found using necessary conditions
-        if (start >= arr.length | end < 0){
+        if (start > end){
             mid=-1;
         }
         return mid;
